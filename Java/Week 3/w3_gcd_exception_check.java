@@ -1,6 +1,4 @@
-import java.lang.Math;
-
-public class activity_2 {
+public class w3_gcd_exception_check {
 
     public static void main(String[] args) {
         int n = 9;
@@ -12,8 +10,6 @@ public class activity_2 {
 
     public static int gCD(int n, int d) {
         int remainder = -1;
-        n = Math.abs(n);
-        d = Math.abs(d);
         try {
             if (n == d) {
                 return n;
@@ -38,8 +34,6 @@ public class activity_2 {
     }
 
     public static int gCDRecursive(int n, int d) {
-        n = Math.abs(n);
-        d = Math.abs(d);
         try {
             if (n == d) {
                 return n;
