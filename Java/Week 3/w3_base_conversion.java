@@ -1,7 +1,7 @@
 public class w3_base_conversion {
     public static void main(String[] args)
     {
-        int num = 2145463;
+        int num = 0;
         int base = 16;
 
         System.out.printf("Decimal: %d in base %d: ", num, base);
@@ -29,19 +29,26 @@ public class w3_base_conversion {
     {
         int modResult;
         String[] letters = { "A", "B", "C", "D", "E", "F" };
-        while (dec > 0)
+        
+        if (dec == 0)
         {
-            modResult = dec % base;
+            reverseResult.append(dec);
+        }else 
+        {
+            while (dec > 0)
+            {
+                modResult = dec % base;
 
-            if (modResult > 9)
-            {
-                reverseResult.append(letters[modResult - 10]);
-            } else
-            {
-                reverseResult.append(dec % base);
+                if (modResult > 9)
+                {
+                    reverseResult.append(letters[modResult - 10]);
+                } else
+                {
+                    reverseResult.append(dec % base);
+                }
+                dec = dec / base;
+
             }
-            dec = dec / base;
-
         }
         reverseString(reverseResult, result);
     }
@@ -53,6 +60,9 @@ public class w3_base_conversion {
 
         switch (dec) {
         case 0 -> {
+            if (reverseResult.isEmpty()){
+                reverseResult.append(dec);
+            }
             reverseString(reverseResult, result);
         }
         default -> {
