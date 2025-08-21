@@ -133,8 +133,12 @@ class DSACircularQueue extends DSAQueue {
             throw new IllegalArgumentException("Error! The queue is full!");
         } else
         {
-            back = (back + 1) % maxCapacity;
-            queue[back] = value;
+            if(isEmpty()){
+                queue[back] = value;
+            } else {
+               back = (back + 1) % maxCapacity;
+                queue[back] = value; 
+            }
             count++;
         }
     }
@@ -142,8 +146,11 @@ class DSACircularQueue extends DSAQueue {
     public Object dequeue()
     {
         Object topVal = peek();
-        front = (front + 1) % maxCapacity;
         count--;
+        if(count != 0){
+            front = (front + 1) % maxCapacity;
+        }
+        
         return topVal;
     }
 
