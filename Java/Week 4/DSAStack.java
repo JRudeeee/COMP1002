@@ -1,51 +1,68 @@
 
 class DSAStack {
-    // Varialbles
+    /* Varialbles */
     private final int DEFAULT_CAPACITY = 100;
-    private final Object ADT[];
-    private  int count = 0;
-    /* This exception should change */
-    private final String e = "this is an exception\n";
+    private final Object stack[];
+    private int count = 0;
 
+    /* Default Constructor */
     public DSAStack()
     {
-        ADT = new Object[DEFAULT_CAPACITY];
+        stack = new Object[DEFAULT_CAPACITY];
     }
 
-    public int getCount(){
-        return this.count;
+    /* Alternate Constructor */
+    public DSAStack(int maxCapacity)
+    {
+        stack = new Object[maxCapacity];
     }
 
-    public Boolean isEmpty(){
-        return (this.count == 0);
+    /* Accessor Methods */
+    public int getCount()
+    {
+        return count;
     }
 
-    public Boolean isFull(){
-         return (this.count == this.ADT.length);
+    public Boolean isEmpty()
+    {
+        return (count == 0);
     }
 
-    public void push(Object value){
-        if (isFull()){
-            System.out.print(e); // exception need to change
-        } else {
-            ADT[this.count] = value;
-            this.count++;
+    public Boolean isFull()
+    {
+        return (count == stack.length);
+    }
+
+    public Object top()
+    {
+        Object topVal;
+        if (isEmpty())
+        {
+            throw new IllegalArgumentException("Error! The stack is empty!");
+        } else
+        {
+            topVal = stack[count - 1];
         }
-    }
-
-    public Object pop(){
-        Object topVal = top();
-        this.count--;
         return topVal;
     }
 
-    public Object top(){
-        Object topVal = 0;
-        if(isEmpty()){
-            System.out.print(e); // exception needs to change
-        } else {
-            topVal = this.ADT[this.count-1];
+    /* Mutator Methods */
+    public void push(Object value)
+    {
+        if (isFull())
+        {
+            throw new IllegalArgumentException("Error! The stack is full!");
+        } else
+        {
+            stack[count] = value;
+            count++;
         }
+    }
+
+    public Object pop()
+    {
+        Object topVal = top();
+        count--;
         return topVal;
     }
 }
