@@ -23,8 +23,10 @@ public class w3_factorial {
         long nFactorial = 1; // Factorial of 0, 1 == 1
 
         // if n is 2 or greater, calculate the factorial
-        for (int ii = n; ii >= 2; ii--)
+        for (int ii = n; ii >= 2; ii--) 
+        {
             nFactorial *= ii;
+        }
         return nFactorial; // return the result
     }
 
@@ -33,9 +35,14 @@ public class w3_factorial {
      */
     public static long calcNFactorialRecursive(int n)
     {
-        if (n == 0) // final recursive call when n=0
-            return 1;
-        else // return product of n and subsequent recursive calls.
-            return n * calcNFactorialRecursive(n - 1);
+        long result;
+        if (n == 0)
+        { // final recursive call when n=0
+            result = 1;
+        }else
+        { // return product of n and subsequent recursive calls.
+            result = n * calcNFactorialRecursive(n - 1);
+        }
+        return result;
     }
 }
