@@ -25,17 +25,18 @@ public class w3_fibonacci_exception_check {
      */
     public static long fibonacci(int n)
     {
+        long fibResult;
         switch (n) { // depending on the value of being calculated
         case 0 -> { // where initial value is 0
-            return 0;
+            fibResult = 0;
         }
         case 1 -> { // where initial value is 1
-            return 1;
+            fibResult = 1;
         }
         default -> { // for any other value of n
             long fib1 = 0; // initialised for n = 2
             long fib2 = 1; // initialised for n = 2
-            long fibResult = 0; // initilised to 0 in case loop fails
+            fibResult = 0; // initilised to 0 in case loop fails
 
             for (int ii = 2; ii <= n; ii++) // loop from 2 to n
             {
@@ -44,35 +45,38 @@ public class w3_fibonacci_exception_check {
                 fib2 = fibResult; // set sum result to new fib n+1
             }
 
-            return fibResult; // return fib number
+            
         }
         }
+        return fibResult; // return fib number
     }
 
     /*
-     * function to calculate the value of a given number in the fibonacci sequence
-     * recursively.
+     * function to calculate the value of a given number in the fibonacci sequence recursively.
      */
     public static long fibonacciRecursive(int n)
     {
+        long fibResult;
         switch (n) { // depending on the value of being calculated
         case 0 -> { // where initial value is 0
-            return 0;
+            fibResult = 0;
         }
         case 1 -> { // where initial value is 1
-            return 1;
+            fibResult = 1;
         }
         default -> { // for any other value of n
-            long fibResult = fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
+            fibResult = fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
             /*
              * recursively find the sum of the number on the fibonacci 
              * sequence. Two recursive calls to find each number.
              */
-            return fibResult; // return fib number
+            
         }
         }
+        return fibResult; //return fib number
 
     }
+
 
     /*
      * Function to get an integer input from the user. Checks user input until input

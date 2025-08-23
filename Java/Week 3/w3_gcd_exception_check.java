@@ -26,15 +26,16 @@ public class w3_gcd_exception_check {
      */
     public static int gCD(int n, int d)
     {
+        int result;
         int remainder; // temp variable for shifting between devisors
         try
         {
             if (n == d) // if equal, gcd = n = d
             {
-                return n;
+                result = n;
             } else
             {
-
+                result = n;
                 while (d != 0) // loop until divisor found
                 {
                     remainder = n % d; // get remainder of division
@@ -44,15 +45,17 @@ public class w3_gcd_exception_check {
                         d = remainder; // make remainder new devisor
                     } else // if remainder = 0
                     {
-                        return d; // return final devisor
+                        result = d; // return final devisor
+                        d = 0; // exit loop
                     }
                 }
             }
         } catch (java.lang.ArithmeticException e) // if a devide by zero exception occurs
         {
             System.out.println("Cant divide by Zero");
+            result = -1; //error
         }
-        return n; // return numerator where devisor is zero
+        return result; // return numerator where devisor is zero
 
     }
 
@@ -61,23 +64,25 @@ public class w3_gcd_exception_check {
      */
     public static int gCDRecursive(int n, int d)
     {
+        int result;
         try
         {
             if (n == d) // if equal, gcd = n = d
             {
-                return n;
+                result = n;
             } else if (d == 0) // if devisor is zero
             {
-                return n;
+                result = n;
             } else
             {
-                return gCDRecursive(d, n % d); // recursive check with devisor, devided by remainder.
+                result = gCDRecursive(d, n % d); // recursive check with devisor, devided by remainder.
             }
         } catch (java.lang.ArithmeticException e) // if a devide by zero exception occurs
         {
             System.out.println("Cant divide by Zero");
+            result = -1; //failed
         }
-        return d; // Fallback return, should not be used
+        return result; // Fallback return, should not be used
     }
 
     /*
