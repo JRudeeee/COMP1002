@@ -1,3 +1,6 @@
+
+import java.util.NoSuchElementException;
+
 class DSAQueue {
     /* Varialbles */
     protected int DEFAULT_CAPACITY = 100;
@@ -32,6 +35,17 @@ class DSAQueue {
         return (count == queue.length);
     }
 
+    public Object peek(){
+        return null;
+    }
+
+    public void enqueue(Object value){
+    }
+
+    public Object dequeue(){
+        return null;
+    }
+
 }
 
 class DSAShuffleQueue extends DSAQueue {
@@ -49,25 +63,25 @@ class DSAShuffleQueue extends DSAQueue {
     }
 
     /* Accessor Methods */
+    @Override
     public Object peek()
     {
         Object topVal;
         if (isEmpty())
         {
-            throw new IllegalArgumentException("Error! The queue is empty!");
-        } else
-        {
-            topVal = this.queue[0];
+            throw new NoSuchElementException("Error! The queue is empty!");
         }
+            topVal = this.queue[0];
         return topVal;
     }
 
     /* Mutator Methods */
+    @Override
     public void enqueue(Object value)
     {
         if (isFull())
         {
-            throw new IllegalArgumentException("Error! The queue is full!");
+            throw new IllegalStateException("Error! The queue is full!");
         } else
         {
             queue[count] = value;
@@ -75,10 +89,12 @@ class DSAShuffleQueue extends DSAQueue {
         }
     }
 
+    @Override
     public Object dequeue()
     {
         Object topVal = peek();
 
+        queue[count-1] = null;
         for (int ii = 1; ii < count; ii++)
         {
             queue[ii - 1] = queue[ii];
@@ -112,12 +128,13 @@ class DSACircularQueue extends DSAQueue {
     }
 
     /* Accessor Methods */
+    @Override
     public Object peek()
     {
         Object topVal;
         if (isEmpty())
         {
-            throw new IllegalArgumentException("Error! The queue is empty!");
+            throw new NoSuchElementException("Error! The queue is empty!");
         } else
         {
             topVal = queue[front];
@@ -126,11 +143,12 @@ class DSACircularQueue extends DSAQueue {
     }
 
     /* Mutator Methods */
+    @Override
     public void enqueue(Object value)
     {
         if (isFull())
         {
-            throw new IllegalArgumentException("Error! The queue is full!");
+            throw new IllegalStateException("Error! The queue is full!");
         } else
         {
             if(isEmpty()){
@@ -143,6 +161,7 @@ class DSACircularQueue extends DSAQueue {
         }
     }
 
+    @Override
     public Object dequeue()
     {
         Object topVal = peek();

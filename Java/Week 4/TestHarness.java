@@ -1,10 +1,22 @@
-
 class TestHarness {
 
-    public static void main(String[] args)
+    public static void main(String[] args) {
+        testCircular();
+
+        EquationSolver mySovler = new EquationSolver();
+
+        double result = mySovler.solve("( 25.09 + 1.57 / 2 ) * 3.2 - 8 / 2");
+        
+        System.out.println(result);
+    }
+
+
+
+    public static void testCircular()
     {
 
-        DSACircularQueue circQueue = new DSACircularQueue();
+        
+        DSAQueue circQueue = new DSACircularQueue();
 
         System.out.println(circQueue.isFull());
         System.out.println(circQueue.isEmpty());
@@ -68,7 +80,7 @@ class TestHarness {
 
         for (int ii = 0; ii < 50; ii++)
         {
-            circQueue.dequeue();
+            System.out.print(circQueue.dequeue() + ", ");
         }
 
         try
@@ -83,7 +95,7 @@ class TestHarness {
         {
             for (int ii = 0; ii < 50; ii++)
             {
-                circQueue.dequeue();
+                System.out.print(circQueue.dequeue() + ", ");
             }
 
         } catch (Exception e)
