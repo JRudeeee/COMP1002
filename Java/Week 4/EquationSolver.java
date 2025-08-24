@@ -24,6 +24,7 @@ class EquationSolver {
         {
             parsed = parseNextTerm(term);
 
+            
             if (parsed instanceof Double)
             {
                 postfix.enqueue(parsed);
@@ -34,11 +35,16 @@ class EquationSolver {
                     opStack.push(parsed);
                 }
                 case ')' -> {
-                    while ((char) opStack.top() != '(')
+                    while (!opStack.isEmpty() && (char) opStack.top() != '(')
                     {
                         postfix.enqueue((char) opStack.pop());
                     }
-                    opStack.pop();
+                    if (!opStack.isEmpty() && (char) opStack.top() == '('){
+                        opStack.pop();
+                    } else {
+                        throw new IllegalStateException("No opening parenthesis!");
+                    }
+                    
                 }
                 case '+', '-', '*', '/' -> {
                     while (!opStack.isEmpty() && (char) opStack.top() != '('
@@ -128,11 +134,16 @@ class EquationSolver {
     private Object parseNextTerm(String term)
     {
         Object parsed;
-        double isDouble;
+        double isDouble = 0;
 
         if (term.length() > 1)
         {
-            isDouble = Double.parseDouble(term);
+            try {
+                isDouble = Double.parseDouble(term);
+            } catch (IllegalArgumentException e) {
+                System.err.println("Unable to parse non-numeric values - Result will be incorrect!");
+            }
+            
             parsed = (double) isDouble;
         } else
         {

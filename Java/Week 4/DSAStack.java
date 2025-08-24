@@ -1,4 +1,7 @@
 
+import java.util.NoSuchElementException;
+
+
 class DSAStack {
     /* Varialbles */
     private final int DEFAULT_CAPACITY = 100;
@@ -38,7 +41,7 @@ class DSAStack {
         Object topVal;
         if (isEmpty())
         {
-            throw new IllegalArgumentException("Error! The stack is empty!");
+            throw new NoSuchElementException("Error! The stack is empty!");
         } else
         {
             topVal = stack[count - 1];
@@ -51,7 +54,7 @@ class DSAStack {
     {
         if (isFull())
         {
-            throw new IllegalArgumentException("Error! The stack is full!");
+            throw new IllegalStateException("Error! The stack is full!");
         } else
         {
             stack[count] = value;

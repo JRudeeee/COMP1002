@@ -1,7 +1,7 @@
 class TestHarness {
 
     public static void main(String[] args) {
-        testCircular();
+        //testCircular();
 
         EquationSolver mySovler = new EquationSolver();
 
