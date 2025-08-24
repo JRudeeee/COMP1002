@@ -94,11 +94,12 @@ class DSAShuffleQueue extends DSAQueue {
     {
         Object topVal = peek();
 
-        queue[count-1] = null;
+        
         for (int ii = 1; ii < count; ii++)
         {
             queue[ii - 1] = queue[ii];
         }
+        queue[count-1] = null;
 
         count--;
         return topVal;
