@@ -51,7 +51,7 @@ public class DSABinarySearchTree {
         }
     }
 
-    private final DSATreeNode m_root;
+    private DSATreeNode m_root;
 
     public DSABinarySearchTree()
     {
@@ -86,7 +86,7 @@ public class DSABinarySearchTree {
 
     public void insert(String key, Object value)
     {
-        insertRec(key, value, m_root);
+        m_root = insertRec(key, value, m_root);
     }
 
     private DSATreeNode insertRec(String key, Object value, DSATreeNode currNode)
@@ -110,7 +110,7 @@ public class DSABinarySearchTree {
 
     public void delete(String key)
     {
-        deleteRec(key, m_root);
+        m_root = deleteRec(key, m_root);
     }
 
     private DSATreeNode deleteRec(String key, DSATreeNode currNode)
@@ -237,6 +237,162 @@ public class DSABinarySearchTree {
         return htSoFar;
     }
 
+    public int balance()
+    {
 
+        int potLeaves = 2 ^ height();
 
+        int leaves = balancerec(m_root);
+
+        return leaves / potLeaves * 100;
+    }
+
+    private int balancerec(DSATreeNode currNode)
+    {
+
+        int leaves = 0;
+
+        if (currNode.getLeft() == null && currNode.getRight() == null)
+        {
+            leaves++;
+        } else
+        {
+            if (currNode.getLeft() != null)
+            {
+                leaves += balancerec(currNode.getLeft());
+            }
+            if (currNode.getRight() != null)
+            {
+                leaves += balancerec(currNode.getRight());
+            }
+        }
+
+        return leaves;
+    }
+
+    public void inorder()
+    {
+        DSAQueue treeContents = inorderRec(m_root);
+
+        while (!treeContents.isEmpty())
+        {
+            System.out.print(treeContents.dequeue() + ", ");
+        }
+        System.out.print("In-Order Traversal.\n");
+    }
+
+    private DSAQueue inorderRec(DSATreeNode currNode)
+    {
+        DSAQueue treeContents = new DSAQueue();
+        DSAQueue treeLeft;
+        DSAQueue treeRight;
+
+        if (currNode.getLeft() != null)
+        {
+            treeLeft = inorderRec(currNode.getLeft());
+
+            while (!treeLeft.isEmpty())
+            {
+                treeContents.enqueue(treeLeft.dequeue());
+            }
+        }
+
+        treeContents.enqueue(currNode.getValue());
+
+        if (currNode.getRight() != null)
+        {
+            treeRight = inorderRec(currNode.getRight());
+
+            while (!treeRight.isEmpty())
+            {
+                treeContents.enqueue(treeRight.dequeue());
+            }
+        }
+
+        return treeContents;
+    }
+
+    public void preorder()
+    {
+        DSAQueue treeContents = preorderRec(m_root);
+
+        while (!treeContents.isEmpty())
+        {
+            System.out.print(treeContents.dequeue() + ", ");
+        }
+        System.out.print("Pre-Order Traversal.\n");
+    }
+
+    private DSAQueue preorderRec(DSATreeNode currNode)
+    {
+        DSAQueue treeContents = new DSAQueue();
+        DSAQueue treeLeft;
+        DSAQueue treeRight;
+
+        treeContents.enqueue(currNode.getValue());
+
+        if (currNode.getLeft() != null)
+        {
+            treeLeft = preorderRec(currNode.getLeft());
+
+            while (!treeLeft.isEmpty())
+            {
+                treeContents.enqueue(treeLeft.dequeue());
+            }
+        }
+
+        if (currNode.getRight() != null)
+        {
+            treeRight = preorderRec(currNode.getRight());
+
+            while (!treeRight.isEmpty())
+            {
+                treeContents.enqueue(treeRight.dequeue());
+            }
+        }
+
+        return treeContents;
+    }
+
+    public void postorder()
+    {
+        DSAQueue treeContents = postorderRec(m_root);
+
+        while (!treeContents.isEmpty())
+        {
+            System.out.print(treeContents.dequeue() + ", ");
+        }
+        System.out.print("Post-Order Traversal.\n");
+    }
+
+    private DSAQueue postorderRec(DSATreeNode currNode)
+    {
+        DSAQueue treeContents = new DSAQueue();
+        DSAQueue treeLeft;
+        DSAQueue treeRight;
+
+        if (currNode.getLeft() != null)
+        {
+            treeLeft = postorderRec(currNode.getLeft());
+
+            while (!treeLeft.isEmpty())
+            {
+                treeContents.enqueue(treeLeft.dequeue());
+            }
+        }
+
+        if (currNode.getRight() != null)
+        {
+            treeRight = postorderRec(currNode.getRight());
+
+            while (!treeRight.isEmpty())
+            {
+                treeContents.enqueue(treeRight.dequeue());
+            }
+        }
+
+        treeContents.enqueue(currNode.getValue());
+
+        return treeContents;
+    }
 }
