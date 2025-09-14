@@ -13,7 +13,6 @@ public class InteractiveTreeMenu {
         DSABinarySearchTree tree = new DSABinarySearchTree();
 
         int newValue;
-        int repeat;
 
         while (!quit)
         {
