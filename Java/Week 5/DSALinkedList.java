@@ -127,28 +127,28 @@ class DSALinkedList {
         }
 
         /* Accessors */
-        public Object getValue(){
+        private Object getValue(){
             return value;
         }
 
-        public DSAListNode getNext(){
+        private DSAListNode getNext(){
             return next;
         }
 
-        public DSAListNode getPrev(){
+        private DSAListNode getPrev(){
             return prev;
         }
 
         /* Mutators */
-        public void setValue(Object inValue){
+        private void setValue(Object inValue){
             value = inValue;
         }
 
-        public void setNext(DSAListNode newNext){
+        private void setNext(DSAListNode newNext){
             next = newNext;
         }
 
-        public void setPrev(DSAListNode newPrev){
+        private void setPrev(DSAListNode newPrev){
             prev = newPrev;
         }
     }

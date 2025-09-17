@@ -240,11 +240,19 @@ public class DSABinarySearchTree {
     public int balance()
     {
 
-        int potLeaves = 2 ^ height();
+        float height = height() - 1;
+        float potLeaves = 2;
+        float leaves;
 
-        int leaves = balancerec(m_root);
+        for(int ii = 0; ii < height; ii++){
+            potLeaves = potLeaves * potLeaves;
+        }
+        
+        leaves = balancerec(m_root);
+       
+        //System.out.println("test" + leaves + " " + potLeaves);
 
-        return leaves / potLeaves * 100;
+        return (int) (leaves / potLeaves * 100);
     }
 
     private int balancerec(DSATreeNode currNode)

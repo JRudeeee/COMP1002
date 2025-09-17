@@ -143,10 +143,11 @@ public class InteractiveListMenu {
                     System.out.println("how many times?");
                     repeat = userGetInt(userScanner, 0, 255);
 
-                    for (int i = 0; i < repeat; i++)
-                    {
-                        list.insertLast(newValue);
-                    }
+                    // for (int i = 0; i < repeat; i++)
+                    // {
+                        
+                    // }
+                    list.insertLast(newValue);
                 }
                 case 3 -> {
                     System.out.println("how many items to remove?");

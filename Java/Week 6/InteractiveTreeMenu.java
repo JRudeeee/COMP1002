@@ -19,7 +19,7 @@ public class InteractiveTreeMenu {
             switch (mainMenuChoice) {
             case 0 -> {
                 displayMenu(mainMenuChoice);
-                mainMenuChoice = userGetInt(userScanner, 1, 4);
+                mainMenuChoice = userGetInt(userScanner, 1, 5);
             }
             case 1 -> {
                 System.out.print("Enter a value to store (0-255)\n");
@@ -66,9 +66,28 @@ public class InteractiveTreeMenu {
                 }
                 }
             }
-            case 4 -> {
+            case 6 -> {
                 quit = true;
                 System.out.println("Goodbye!");
+            }
+            case 4 -> {
+                try {
+                    System.out.println("Tree balace is " + tree.balance() + "%");
+                } catch (NullPointerException e) {
+                    System.out.println("Tree is empty.");
+                }
+                
+                mainMenuChoice = 0;
+            }
+            case 5 -> {
+                try {
+                    System.out.println("Tree min is " + tree.min());
+                    System.out.println("Tree max is " + tree.max());
+                    System.out.println("Tree height is " + tree.height());
+                } catch (NullPointerException e) {
+                    System.out.println("Tree is empty.");
+                }
+                mainMenuChoice = 0;
             }
             }
 
@@ -87,8 +106,10 @@ public class InteractiveTreeMenu {
                     | 1 - Add node                   |
                     | 2 - Delete node                |
                     | 3 - Display the tree           |
+                    | 4 - Display the balance        |
+                    | 5 - Display stats              |
                     +--------------------------------+
-                    | 4 to quit                      |
+                    | 6 to quit                      |
                     +--------------------------------+\n""");
         }
         case 3 -> {
