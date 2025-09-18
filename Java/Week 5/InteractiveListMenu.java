@@ -143,11 +143,11 @@ public class InteractiveListMenu {
                     System.out.println("how many times?");
                     repeat = userGetInt(userScanner, 0, 255);
 
-                    // for (int i = 0; i < repeat; i++)
-                    // {
-                        
-                    // }
-                    list.insertLast(newValue);
+                    for (int i = 0; i < repeat; i++)
+                    {
+                        list.insertLast(newValue);
+                    }
+                    
                 }
                 case 3 -> {
                     System.out.println("how many items to remove?");
@@ -184,10 +184,11 @@ public class InteractiveListMenu {
                 case 5 -> {
                     if (!list.isEmpty())
                     {
-                        while (!list.isEmpty()){
-                            System.out.print(list.removeFirst() + ", ");
+                        DSAQueue contents = list.display();
+                        while (!contents.isEmpty()){
+                            System.out.print(contents.dequeue() + ", ");
                         }
-                        System.out.println();
+                        System.out.println("End of list.");
                     } else
                     {
                         System.out.println("List is empty");

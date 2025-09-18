@@ -1,6 +1,6 @@
 import java.util.NoSuchElementException;
 
-class DSALinkedList {
+public class DSALinkedList {
 
     /* Class Fields */
     DSAListNode head;
@@ -45,6 +45,33 @@ class DSALinkedList {
             nodeValue = tail.getValue();
         }
         return  nodeValue;
+    }
+
+    public DSAQueue display(){
+        DSAQueue listContents = new DSAQueue();
+        DSAListNode temp = head;
+
+        if (isEmpty()){
+            throw new NoSuchElementException("The list is empty!");
+        } else {
+            listContents.enqueue(temp.getValue());
+            while (temp.getNext() != null){
+                listContents.enqueue(temp.getValue());
+                temp = temp.getNext();
+            }
+        }
+
+        return listContents;
+    }
+
+    public DSAListNode getNext(){
+        DSAListNode next;
+        if (isEmpty()){
+            throw new NoSuchElementException("The list is empty!");
+        } else {
+            next = head.getNext();
+        }
+        return next;
     }
     
     /* Mutators */
@@ -109,23 +136,6 @@ class DSALinkedList {
         }
 
         return nodeValue;
-    }
-
-    public DSAQueue display(){
-        DSAQueue listContents = new DSAQueue();
-        DSAListNode temp = head;
-
-        if (isEmpty()){
-            throw new NoSuchElementException("The list is empty!");
-        } else {
-            listContents.enqueue(temp.getValue());
-            while (temp.getNext() != null){
-                listContents.enqueue(temp.getValue());
-                temp = temp.getNext();
-            }
-        }
-
-        return listContents;
     }
 
     /* Private Inner Class */
