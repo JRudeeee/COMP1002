@@ -74,7 +74,7 @@ public class InteractiveHeapMenu {
             case 5 -> { // import
                 try
                 {
-                    heap.importTable("E:\\Important Documents\\University\\Curtin Uni\\2025\\Semester 2\\COMP1002\\Java\\Week 10\\RandomNames7000.csv");
+                    heap.importTable("RandomNames7000.csv");
                     System.out.println("Import Susccesful");
                 } catch (NoSuchElementException e)
                 {
@@ -86,7 +86,7 @@ public class InteractiveHeapMenu {
             case 6 -> { // export
                 try
                 {
-                    heap.export("E:\\Important Documents\\University\\Curtin Uni\\2025\\Semester 2\\COMP1002\\Java\\Week 10\\output.csv");
+                    heap.export("output.csv");
                     System.out.println("Export Successful");
                 } catch (NoSuchElementException e)
                 {
